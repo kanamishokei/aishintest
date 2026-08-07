@@ -1,0 +1,2 @@
+const hb=document.querySelector('.hamb'); const mob=document.querySelector('.mobile'); if(hb&&mob){hb.addEventListener('click',()=>mob.classList.toggle('open'));}
+document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const c=btn.dataset.cat;document.querySelectorAll('.archive .post-card').forEach(card=>{card.hidden=!(c==='all'||card.dataset.cat===c);});}));
