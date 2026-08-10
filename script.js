@@ -8,9 +8,132 @@ googleSearchBlockMeta.name = 'googlebot';
 googleSearchBlockMeta.content = 'noindex, nofollow, noarchive, nosnippet';
 document.head.append(googleSearchBlockMeta);
 
-const hb = document.querySelector('.hamb');
+// ヘッダーとフッターの項目を、現在公開しているページ構成に合わせて統一する。
+const menuSections = {
+  admission: [
+    ['guide.html', '園を知る'],
+    ['admissions.html', '見学・入園の流れ'],
+    ['greeting.html', '園長あいさつ'],
+    ['policy.html', '教育方針'],
+    ['class.html', '職員・クラス・保育時間'],
+    ['history.html', '沿革'],
+    ['apply.html', '募集要項'],
+    ['request.html', '資料請求'],
+    ['information.html', '情報公開']
+  ],
+  life: [
+    ['life.html', '園の生活と行事'],
+    ['schedule.html', '一日の流れ'],
+    ['annual.html', '年間行事予定'],
+    ['lunch.html', '給食'],
+    ['safe.html', '安全・衛生について'],
+    ['map.html', '園内探索マップ'],
+    ['bus.html', '通園バスコース']
+  ],
+  nozomikai: [
+    ['nozomikai.html', 'のぞみ会活動'],
+    ['millefeuille.html', 'ミルフィーユ'],
+    ['candy.html', 'キャンディ'],
+    ['olive.html', 'オリーブ'],
+    ['sorairo.html', 'そらいろのたね'],
+    ['tomsawyer.html', 'トムソーヤパパの会'],
+    ['nozomikai-library.html', 'のぞみ会図書']
+  ],
+  other: [
+    ['playroom.html', '子育て支援プレイルーム'],
+    ['album.html', 'あいしんモーメント'],
+    ['faq.html', 'よくある質問'],
+    ['parent.html', '在園中の保護者の皆様'],
+    ['documents.html', '資料・書類'],
+    ['access.html', 'アクセス'],
+    ['contact.html', 'お問い合わせ']
+  ]
+};
+
+const makeLink = ([href, label], className = '') => {
+  const link = document.createElement('a');
+  link.href = href;
+  link.textContent = label;
+  if (className) link.className = className;
+  return link;
+};
+const makeDesktopGroup = (parent, items) => {
+  const group = document.createElement('div');
+  group.className = 'menu-group';
+  group.append(makeLink(parent, 'menu-parent'));
+  const dropdown = document.createElement('div');
+  dropdown.className = 'dropdown';
+  items.forEach((item) => dropdown.append(makeLink(item)));
+  group.append(dropdown);
+  return group;
+};
+const makeMobileGroup = (label, items) => {
+  const details = document.createElement('details');
+  const summary = document.createElement('summary');
+  summary.textContent = label;
+  details.append(summary);
+  items.forEach((item) => details.append(makeLink(item)));
+  return details;
+};
+
+const desktopMenu = document.querySelector('.menu');
+if (desktopMenu) {
+  desktopMenu.replaceChildren(
+    makeDesktopGroup(['guide.html', '入園案内'], menuSections.admission),
+    makeDesktopGroup(['life.html', '園の生活と行事'], menuSections.life),
+    makeLink(['playroom.html', '子育て支援'], 'menu-direct menu-playroom'),
+    makeLink(['album.html', 'あいしんモーメント'], 'menu-direct'),
+    makeLink(['faq.html', 'よくある質問'], 'menu-direct'),
+    makeDesktopGroup(['nozomikai.html', 'のぞみ会活動'], menuSections.nozomikai)
+  );
+}
+
 const mob = document.querySelector('.mobile');
-if (hb && mob) hb.addEventListener('click', () => mob.classList.toggle('open'));
+if (mob) {
+  mob.replaceChildren(
+    makeMobileGroup('入園案内', menuSections.admission),
+    makeMobileGroup('園の生活と行事', menuSections.life),
+    makeLink(['playroom.html', '子育て支援プレイルーム']),
+    makeLink(['album.html', 'あいしんモーメント']),
+    makeLink(['faq.html', 'よくある質問']),
+    makeMobileGroup('のぞみ会活動', menuSections.nozomikai),
+    makeLink(['parent.html', '在園中の保護者の皆様']),
+    makeLink(['documents.html', '資料・書類']),
+    makeLink(['access.html', 'アクセス']),
+    makeLink(['contact.html', 'お問い合わせ'])
+  );
+}
+
+const footerLinks = document.querySelector('.footer-links');
+if (footerLinks) {
+  const footerGroups = [
+    ['入園案内', menuSections.admission],
+    ['園の生活と行事', menuSections.life],
+    ['のぞみ会活動', menuSections.nozomikai],
+    ['その他', menuSections.other]
+  ];
+  footerLinks.replaceChildren(...footerGroups.map(([label, items]) => {
+    const group = document.createElement('div');
+    const heading = document.createElement('h4');
+    heading.textContent = label;
+    group.append(heading, ...items.map((item) => makeLink(item)));
+    return group;
+  }));
+}
+
+const hb = document.querySelector('.hamb');
+if (hb && mob) {
+  hb.type = 'button';
+  hb.setAttribute('aria-expanded', 'false');
+  hb.setAttribute('aria-controls', 'mobile-navigation');
+  mob.id = 'mobile-navigation';
+  hb.addEventListener('click', () => {
+    const isOpen = mob.classList.toggle('open');
+    hb.setAttribute('aria-expanded', String(isOpen));
+    hb.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニュー');
+    hb.textContent = isOpen ? '×' : '☰';
+  });
+}
 
 // 共通フッターの4グループを、全ページで同じアコーディオンとして動作させる。
 document.querySelectorAll('.footer-links > div').forEach((group) => {
@@ -74,6 +197,27 @@ document.querySelectorAll('.filter').forEach((btn) => btn.addEventListener('clic
 
 const page = location.pathname.split('/').pop() || 'index.html';
 const content = window.AISHIN_OFFICIAL_CONTENT;
+document.querySelectorAll('.menu a[href], .mobile a[href], .footer-group a[href]').forEach((link) => {
+  const href = link.getAttribute('href');
+  if (href === page) link.classList.add('active');
+});
+
+if (page === 'moment-detail.html') {
+  const notice = document.querySelector('main .notice');
+  if (notice) {
+    notice.innerHTML = '愛真幼稚園の日常と最新の活動は、<a class="inline-link" href="https://www.instagram.com/aishin.kindergarten/" target="_blank" rel="noopener noreferrer">公式Instagram</a>でもご覧いただけます。';
+  }
+}
+
+if (page === 'admissions.html') {
+  const admissionsFaq = document.querySelector('main #faq');
+  if (admissionsFaq) {
+    const faqLink = document.createElement('aside');
+    faqLink.className = 'admissions-faq-link';
+    faqLink.innerHTML = '<div><span class="kicker">Questions</span><strong>そのほかの疑問やご相談について</strong><p>園生活や入園に関する詳しい回答は「よくある質問」にまとめています。</p></div><a class="btn" href="faq.html">よくある質問を見る →</a>';
+    admissionsFaq.replaceWith(faqLink);
+  }
+}
 
 // メインページは、見学への案内を既存のボタンの直前に添える。
 if (page === 'index.html') {
@@ -89,6 +233,11 @@ if (page === 'index.html') {
   if (heroLead && !heroLead.dataset.visitMessageAdded) {
     heroLead.append('　園庭、子どもたちの遊び、保育の空気。ホームページでは伝わりきらない愛真の日常を、実際にご覧ください。');
     heroLead.dataset.visitMessageAdded = 'true';
+  }
+  const schoolGuideButton = document.querySelector('.hero-buttons a[href="about.html"]');
+  if (schoolGuideButton) {
+    schoolGuideButton.href = 'guide.html';
+    schoolGuideButton.textContent = '園を知る';
   }
 }
 
@@ -166,7 +315,9 @@ const fullPageMap = {
   'nozomikai-library.html': 'nozomikai'
 };
 const pageMeta = {
+  'about.html': ['愛真幼稚園について', 'キリスト教主義の保育と自然の中での「あそび保育」'],
   'guide.html': ['入園案内', '愛真幼稚園は、とてもたのしい幼稚園です。'],
+  'admissions.html': ['見学・入園の流れ', '園の見学、ご相談、入園までのご案内'],
   'greeting.html': ['園長あいさつ', '園長 井須尚紀からのごあいさつ'],
   'policy.html': ['教育方針', '神様から与えられた幼子を大切に育てる、愛真幼稚園の教育'],
   'history.html': ['沿革', '1898年から続く愛真幼稚園の歩み'],
@@ -175,6 +326,10 @@ const pageMeta = {
   'information.html': ['情報公開', '学校法人愛真幼稚園の公開情報'],
   'parent.html': ['在園中の保護者の皆様へ', '園からのお知らせと各種書類'],
   'contact.html': ['お問い合わせ', '見学・資料請求・プレイルーム予約はこちら'],
+  'documents.html': ['資料・書類', '募集要項・各種資料のご案内'],
+  'class.html': ['職員・クラス・保育時間', '職員構成、クラス、保育時間のご案内'],
+  'access.html': ['アクセス', '愛真幼稚園の所在地と交通案内'],
+  'life.html': ['園の生活と行事', '毎日の生活、年間行事、安全と環境のご案内'],
   'safe.html': ['安全・衛生について', '子どもたちが安心して過ごすために'],
   'annual.html': ['年間行事予定', '季節ごとの行事と園外保育'],
   'schedule.html': ['一日の流れ', '愛真幼稚園で過ごす一日'],
@@ -184,6 +339,9 @@ const pageMeta = {
   'playroom.html': ['プレイルーム', '未就園児、0～3歳児親子体験'],
   'faq.html': ['よくある質問', '入園をご検討の方からのよくある質問'],
   'album.html': ['あいしんモーメント', '毎日が楽しい冒険、おどろきの発見の連続'],
+  'moments.html': ['あいしんモーメント', '愛真幼稚園の日々の活動'],
+  'moment-detail.html': ['笹取り＆笹巻き作り', '季節の自然と地域の食文化にふれる活動'],
+  'news.html': ['園からのお知らせ', '愛真幼稚園からの最新情報'],
   'nozomikai.html': ['のぞみ会活動', '愛真幼稚園のPTA活動'],
   'millefeuille.html': ['ミルフィーユ', '歌を楽しむサークル'],
   'candy.html': ['キャンディ', '手芸・料理などの手作りサークル'],
@@ -200,6 +358,13 @@ if (content && fullPageMap[page]) {
     : document.querySelector('main .article');
   const source = page === 'greeting.html' ? extraContent.greeting : page === 'policy.html' ? extraContent.policy : page === 'apply.html' ? extraContent.admissions : page === 'safe.html' ? extraContent.safe : page === 'annual.html' ? extraContent.annual : page === 'schedule.html' ? extraContent.schedule : page === 'lunch.html' ? extraContent.lunchRefined : page === 'map.html' ? extraContent.mapRefined : page === 'bus.html' ? extraContent.busRefined : page === 'album.html' ? extraContent.albumRefined : page === 'faq.html' ? extraContent.faqOriginal : page === 'millefeuille.html' ? extraContent.millefeuilleRefined : page === 'candy.html' ? extraContent.candyRefined : page === 'olive.html' ? extraContent.oliveRefined : page === 'sorairo.html' ? extraContent.sorairoRefined : page === 'tomsawyer.html' ? extraContent.tomsawyerRefined : page === 'nozomikai-library.html' ? extraContent.libraryRefined : page === 'playroom.html' ? extraContent.playroomRefined : page === 'life.html' ? extraContent.lifeOverview : (content[key] || extraContent[key]);
   if (target && source) target.innerHTML = source;
+  if (target && page === 'lunch.html') {
+    const lunchHeroImage = target.querySelector('.lunch-hero-art img');
+    if (lunchHeroImage) {
+      lunchHeroImage.src = 'assets/life-lunch/photo1_01.jpg';
+      lunchHeroImage.alt = '給食を楽しむ子どもたち';
+    }
+  }
   if (target && page === 'playroom.html') {
     target.querySelector('.playroom-heading>img')?.remove();
     target.querySelector('.playroom-wide-photo')?.remove();
@@ -294,7 +459,7 @@ if (content && fullPageMap[page]) {
     if (heading && !target.querySelector('.bus-title-photo')) {
       const titlePhoto = document.createElement('img');
       titlePhoto.className = 'bus-title-photo';
-      titlePhoto.src = 'assets/life-bus/bus_title.jpg';
+      titlePhoto.src = 'assets/life-bus/bus_photo5_sp.jpg';
       titlePhoto.alt = '愛真幼稚園の通園バス';
       target.querySelector('.bus-page-refined .bus-hero')?.append(titlePhoto);
     }
@@ -496,7 +661,7 @@ if (content && fullPageMap[page]) {
     target.querySelectorAll('.annual-month img').forEach((image, index) => {
       const month = annualPhotoOrder[index];
       if (month) {
-        image.src = month === 11 ? 'assets/life-annual/annual_photo11_custom.png' : `assets/life-annual/annual_photo${month}.jpg`;
+        image.src = `assets/life-annual/annual_photo${month}.jpg`;
         image.alt = `${month}月の行事`;
         image.closest('.annual-month')?.classList.add(`annual-month-${month}`);
       }
@@ -576,7 +741,7 @@ if (content && fullPageMap[page]) {
     'map.html': ['life-map/map_01.png', 'life-map/map_02.webp'],
     'bus.html': ['life-bus/bus_photo1_sp.jpg', 'life-bus/bus_photo2_sp.jpg', 'life-bus/bus_photo3_sp.jpg', 'life-bus/bus_photo4_sp.jpg', 'life-bus/bus_photo5_sp.jpg', 'life-bus/course_fig1_2023_01.png', 'life-bus/course_fig2_2023.png']
   };
-  galleries.schedule = [...galleries.schedule, 'life-schedule/main_photo5-2.jpg', 'life-schedule/main_photo7_1.jpg'];
+  galleries['schedule.html'] = [...galleries['schedule.html'], 'life-schedule/main_photo5-2.jpg', 'life-schedule/main_photo7_1.jpg'];
   if (page !== 'greeting.html' && page !== 'schedule.html' && page !== 'lunch.html' && page !== 'map.html' && page !== 'bus.html' && target && galleries[page] && !(page === 'annual.html' && target.querySelector('.annual-page'))) {
     const gallery = document.createElement('section');
     gallery.className = `photo-gallery life-gallery ${page.replace('.html', '')}`;
@@ -617,3 +782,6 @@ if (content && fullPageMap[page]) {
     document.title = `${meta[0]}｜愛真幼稚園`;
   }
 }
+
+const currentPageMeta = pageMeta[page];
+if (currentPageMeta) document.title = `${currentPageMeta[0]}｜愛真幼稚園`;

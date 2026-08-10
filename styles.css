@@ -213,3 +213,46 @@ main.section > .container.content-grid > .side{display:none}
 .playroom-activity-list article:nth-child(5){grid-column:1/-1;border-left-color:var(--amber);background:linear-gradient(135deg,#fff8eb,#fff)}
 .playroom-activity-list h4{font-size:17px}
 @media(max-width:760px){.playroom-activity-list{grid-template-columns:1fr;gap:11px}.playroom-activity-list article{grid-column:auto!important;min-height:0;padding:18px 17px 18px 20px}.playroom-activity-list h4{font-size:16px}}
+
+/* 最終調整：説明文の可読性、左右の余白、モバイルメニューの自然なスクロール。 */
+.hero-grid>div:first-child{min-width:0;width:100%}
+main p,main li,main dd{font-size:16px!important;line-height:1.95}
+main .feature p,main .post-card p,main .quick small,main .life-menu p{font-size:15px!important;line-height:1.85}
+main .menu-diary-grid li{font-size:14px!important;line-height:1.75}
+.lunch-hero-art img{aspect-ratio:4/3;border-radius:22px;object-fit:cover}
+.footer-group a{min-height:38px;padding:7px 0}
+
+@media(max-width:980px){
+  .header{position:relative;top:auto;backdrop-filter:none}
+  .mobile{position:static;max-height:none;overflow:visible;background:#fff}
+  .mobile.open{display:block}
+  .mobile a,.mobile summary{display:flex;align-items:center;min-height:48px;padding:11px 4px}
+  .mobile summary{justify-content:space-between}
+  .mobile details a{min-height:44px;padding:10px 16px}
+  .footer-group a{min-height:44px;padding:10px 0}
+}
+
+@media(max-width:640px){
+  .hero-grid>div:first-child,.hero-copy,.display,.lead,.hero-buttons{min-width:0;width:100%;max-width:100%}
+  .hero h1.display{font-size:clamp(26px,7.1vw,30px);line-height:1.5}
+  .hero h1.display .display-line{display:block;max-width:100%;white-space:normal}
+  .hero .lead{font-size:16px;line-height:2}
+  .hero-buttons{grid-template-columns:minmax(0,1fr)}
+  .hero-buttons .btn{max-width:100%}
+  .article{padding-right:21px;padding-left:21px}
+  main p,main li,main dd{font-size:16px!important;line-height:1.95}
+  main .feature p,main .post-card p,main .quick small,main .life-menu p{font-size:15px!important;line-height:1.9}
+}
+
+/* 見学・入園ページ：重複するFAQ本文を専用ページへの案内に集約。 */
+.admissions-faq-link{display:flex;align-items:center;justify-content:space-between;gap:28px;margin-top:44px;padding:26px 28px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,#edf5f0,#fff9ed)}
+.admissions-faq-link>div{min-width:0}
+.admissions-faq-link .kicker{margin-bottom:5px}
+.admissions-faq-link strong{display:block;color:var(--green3);font:900 19px/1.5 'Zen Maru Gothic'}
+.admissions-faq-link p{margin:7px 0 0;color:#56665e}
+.admissions-faq-link .btn{flex:none;width:auto}
+@media(max-width:640px){
+  .admissions-faq-link{align-items:stretch;flex-direction:column;gap:18px;margin-top:34px;padding:22px 20px;border-radius:19px}
+  .admissions-faq-link strong{font-size:17px}
+  .admissions-faq-link .btn{width:100%}
+}
