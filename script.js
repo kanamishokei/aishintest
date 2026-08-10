@@ -39,6 +39,12 @@ const menuSections = {
     ['tomsawyer.html', 'トムソーヤパパの会'],
     ['nozomikai-library.html', 'のぞみ会図書']
   ],
+  utility: [
+    ['parent.html', '在園中の保護者の皆様'],
+    ['documents.html', '資料・書類'],
+    ['access.html', 'アクセス'],
+    ['contact.html', 'お問い合わせ']
+  ],
   other: [
     ['playroom.html', '子育て支援プレイルーム'],
     ['album.html', 'あいしんモーメント'],
@@ -60,7 +66,16 @@ const makeLink = ([href, label], className = '') => {
 const makeDesktopGroup = (parent, items) => {
   const group = document.createElement('div');
   group.className = 'menu-group';
-  group.append(makeLink(parent, 'menu-parent'));
+  if (parent[0]) {
+    group.append(makeLink(parent, 'menu-parent'));
+  } else {
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'menu-parent menu-parent-button';
+    trigger.textContent = parent[1];
+    trigger.setAttribute('aria-haspopup', 'true');
+    group.append(trigger);
+  }
   const dropdown = document.createElement('div');
   dropdown.className = 'dropdown';
   items.forEach((item) => dropdown.append(makeLink(item)));
@@ -84,7 +99,8 @@ if (desktopMenu) {
     makeLink(['playroom.html', '子育て支援'], 'menu-direct menu-playroom'),
     makeLink(['album.html', 'あいしんモーメント'], 'menu-direct'),
     makeLink(['faq.html', 'よくある質問'], 'menu-direct'),
-    makeDesktopGroup(['nozomikai.html', 'のぞみ会活動'], menuSections.nozomikai)
+    makeDesktopGroup(['nozomikai.html', 'のぞみ会活動'], menuSections.nozomikai),
+    makeDesktopGroup(['', 'その他'], menuSections.utility)
   );
 }
 
@@ -93,14 +109,11 @@ if (mob) {
   mob.replaceChildren(
     makeMobileGroup('入園案内', menuSections.admission),
     makeMobileGroup('園の生活と行事', menuSections.life),
-    makeLink(['playroom.html', '子育て支援プレイルーム']),
+    makeLink(['playroom.html', '子育て支援']),
     makeLink(['album.html', 'あいしんモーメント']),
     makeLink(['faq.html', 'よくある質問']),
     makeMobileGroup('のぞみ会活動', menuSections.nozomikai),
-    makeLink(['parent.html', '在園中の保護者の皆様']),
-    makeLink(['documents.html', '資料・書類']),
-    makeLink(['access.html', 'アクセス']),
-    makeLink(['contact.html', 'お問い合わせ'])
+    makeMobileGroup('その他', menuSections.utility)
   );
 }
 
@@ -785,3 +798,11 @@ if (content && fullPageMap[page]) {
 
 const currentPageMeta = pageMeta[page];
 if (currentPageMeta) document.title = `${currentPageMeta[0]}｜愛真幼稚園`;
+
+// モバイルでは、もともと左揃えの説明文だけを均等配置する。
+// 中央揃え・右揃えの意図がある文章はそのまま保持する。
+document.querySelectorAll('.page-hero p, main p, main li, main dd, main span, main small').forEach((copy) => {
+  if (copy.children.length || copy.closest('h1, h2, h3, h4, button, a, summary')) return;
+  const alignment = getComputedStyle(copy).textAlign;
+  if (alignment === 'left' || alignment === 'start') copy.classList.add('balanced-copy');
+});
