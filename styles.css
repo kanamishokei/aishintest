@@ -292,7 +292,7 @@ body>main{flex:1 0 auto}
   モバイルの画面末尾：Chrome の 100dvh はアドレスバーの表示・非表示で高さが変わり、
   フッターの後ろに大きな背景領域を作ることがある。常に小さい表示領域を基準にする。
 */
-html,body{width:100%;margin:0;padding:0;overscroll-behavior-y:none}
+html,body{width:100%;margin:0;padding:0}
 html{background-color:var(--cream)!important}
 body>main{background-color:var(--cream)}
 .footer{width:100%;padding-bottom:max(24px,env(safe-area-inset-bottom))}
@@ -326,53 +326,29 @@ body>main{background-color:var(--cream)}
 .greeting-quote-refined:before{position:absolute;top:16px;left:17px;content:'“';color:#ddb25d;font:900 72px/1 Georgia,serif;opacity:.72}
 .greeting-quote-refined span{display:block;margin-bottom:8px;color:#efc36e;font:800 11px/1.4 'Zen Maru Gothic';letter-spacing:.13em}
 .greeting-quote-refined p{max-width:820px;margin:0;font:800 clamp(17px,2vw,22px)/1.8 'Zen Maru Gothic'}
-.greeting-story{display:grid;grid-template-columns:1fr .82fr;gap:36px;align-items:end;margin:50px 0 34px;padding:0 8px}
-.greeting-story h3,.greeting-closing h3{margin:7px 0 12px;color:var(--green3);font:900 clamp(23px,3vw,33px)/1.5 'Zen Maru Gothic'}
-.greeting-story p{margin:0;color:#56665e;font-size:14px;line-height:2}
-.greeting-section-label{color:var(--amber);font:800 11px/1.4 'Zen Maru Gothic';letter-spacing:.12em}
-.greeting-values{margin:50px 0 55px}
-.greeting-values-heading{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.7fr);column-gap:40px;align-items:end;margin-bottom:24px;padding:0 8px}
-.greeting-values-heading .greeting-section-label{grid-column:1/-1;margin-bottom:6px}
-.greeting-values-heading h3{margin:0;color:var(--green3);font:900 clamp(24px,3vw,34px)/1.45 'Zen Maru Gothic'}
-.greeting-values-heading>p{margin:0;color:#68776f;font-size:13px;line-height:1.9}
-.greeting-values-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.greeting-value-card{position:relative;min-height:300px;padding:31px 32px 28px;border:1px solid #dfe9e2;border-radius:24px;background:#fff;box-shadow:0 9px 23px rgba(39,73,56,.045)}
-.greeting-value-number{display:block;margin-bottom:24px;color:#c49341;font:800 11px/1 'Zen Maru Gothic';letter-spacing:.13em}
-.greeting-value-card h4{margin:0 0 22px;color:var(--green3);font:900 24px/1.45 'Zen Maru Gothic';letter-spacing:-.025em}
-.greeting-value-points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-.greeting-value-points>div{padding-top:14px;border-top:1px solid #dfe8e2}
-.greeting-value-points b{display:block;margin-bottom:7px;color:var(--green);font:800 12px/1.5 'Zen Maru Gothic'}
-.greeting-value-points p{margin:0;color:#65746c;font-size:12px;line-height:1.85}
-.greeting-value-card-photo{display:grid;grid-template-columns:minmax(170px,.72fr) minmax(0,1fr);gap:0;padding:0;overflow:hidden}
-.greeting-value-card-photo>img{display:block;width:100%;height:100%;min-height:300px;object-fit:cover}
-.greeting-value-card-photo>div{padding:31px 28px 26px}
-.greeting-value-card-photo .greeting-value-points{grid-template-columns:1fr;gap:14px}
-.greeting-value-card-photo h4{font-size:22px}
-.greeting-closing{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:33px 37px;border-top:1px solid #e5ece7;border-bottom:1px solid #e5ece7}
-.greeting-closing>div{max-width:720px}.greeting-closing h3{font-size:24px}.greeting-closing p{margin:0;color:#56665e;font-size:13px;line-height:1.9}.greeting-closing .btn{flex:none;width:auto}
+.greeting-letter{max-width:790px;margin:56px auto 0}
+.greeting-letter>p{margin:0;color:#53635b;font-size:15px;line-height:2.15}
+.greeting-hero-copy>p:last-child,.greeting-letter>p{text-align:justify;text-justify:inter-character}
+.greeting-letter>p+p{margin-top:20px}
+.greeting-letter .greeting-quote-refined{margin:42px 0;padding-right:32px}
+.greeting-letter-ending{margin-top:45px;padding-top:34px;border-top:1px solid #dce6df}
+.greeting-letter-ending>p{margin:0;color:var(--green3);font:800 17px/1.9 'Zen Maru Gothic'}
+.greeting-signature{margin:27px 0 30px;text-align:right}
+.greeting-signature span{display:block;margin-bottom:5px;color:#75857c;font-size:12px}
+.greeting-signature strong{color:var(--green3);font:900 20px/1.5 'Zen Maru Gothic'}
+.greeting-life-link{display:inline-flex;align-items:center;gap:8px;color:var(--green);font:800 13px/1.6 'Zen Maru Gothic';border-bottom:1px solid #a8c2b2;padding-bottom:3px}
+.greeting-life-link span{color:var(--amber)}
 @media(max-width:760px){
   .greeting-hero-refined{grid-template-columns:1fr;gap:24px;padding:28px 22px;border-radius:24px}
   .greeting-hero-photo{min-height:250px;border-radius:18px}
   .greeting-quote-refined{margin:26px 0;padding:25px 5px 24px 48px}
   .greeting-quote-refined:before{top:17px;left:1px;font-size:60px}
   .greeting-quote-refined p{font-size:16px;line-height:1.75}
-  .greeting-story{grid-template-columns:1fr;gap:14px;margin:38px 0 25px;padding:0}
-  .greeting-story h3{font-size:23px}
-  .greeting-story p{font-size:13px}
-  .greeting-values{margin:39px 0 42px}
-  .greeting-values-heading{display:block;margin-bottom:19px;padding:0}
-  .greeting-values-heading h3{margin-top:5px;font-size:23px}
-  .greeting-values-heading>p{margin-top:8px;font-size:12px}
-  .greeting-values-grid{grid-template-columns:1fr;gap:11px}
-  .greeting-value-card{min-height:0;padding:23px 20px;border-radius:19px}
-  .greeting-value-number{margin-bottom:16px}
-  .greeting-value-card h4{margin-bottom:16px;font-size:20px}
-  .greeting-value-points{gap:14px}
-  .greeting-value-points>div{padding-top:11px}
-  .greeting-value-points p{font-size:11.5px}
-  .greeting-value-card-photo{display:block;padding:0}
-  .greeting-value-card-photo>img{height:190px;min-height:0}
-  .greeting-value-card-photo>div{padding:21px 20px 22px}
-  .greeting-value-card-photo .greeting-value-points{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-  .greeting-closing{display:block;padding:28px 0}.greeting-closing h3{font-size:22px}.greeting-closing p{font-size:13px}.greeting-closing .btn{width:100%;margin-top:20px}
+  .greeting-letter{margin-top:37px}
+  .greeting-letter>p{font-size:14px;line-height:2.05}
+  .greeting-letter>p+p{margin-top:17px}
+  .greeting-letter .greeting-quote-refined{margin:34px 0;padding-right:5px}
+  .greeting-letter-ending{margin-top:37px;padding-top:28px}
+  .greeting-letter-ending>p{font-size:15px}
+  .greeting-signature{margin:23px 0 27px}
 }

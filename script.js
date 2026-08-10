@@ -284,21 +284,17 @@ extraContent.greetingRefined = `
       <figure class="greeting-hero-photo"><img src="assets/original/guide/greeting_photo3.jpg" alt="大きな木のある愛真幼稚園の園庭" loading="lazy"></figure>
     </header>
 
-    <section class="greeting-quote-refined"><span>OUR WISH</span><p>子ども達が、神と人を愛し、愛され、感性豊かに伸び伸び活き活きと育ちますように、職員一同祈りをもって励んでいます。</p></section>
+    <article class="greeting-letter">
+      <p>愛真幼稚園は、神様が造られた自然を愛することも大事にし、「遊びの保育」「自然保育」にこだわる幼稚園です。園庭には50種類以上の木が植えられ、種々の果物が実を結びます。畑に子ども達が種をまき、水をやり、収穫します。</p>
+      <p>花を摘み、虫を探し、ツリーハウスに登ったり、泥んこ遊びをしたり。智頭杉をふんだんに使った園舎で、子ども達は一年中裸足で木の温もりを感じて過ごします。</p>
 
-    <section class="greeting-story"><div><span class="greeting-section-label">NATURE & PLAY</span><h3>自然のなかで、心とからだを育てます。</h3><p>愛真幼稚園は、神様が造られた自然を愛することも大事にし、「遊びの保育」「自然保育」にこだわる幼稚園です。園庭には50種類以上の木が植えられ、種々の果物が実を結びます。畑に子ども達が種をまき、水をやり、収穫します。</p></div><p>花を摘み、虫を探し、ツリーハウスに登ったり、泥んこ遊びをしたり。智頭杉をふんだんに使った園舎で、子ども達は一年中裸足で木の温もりを感じて過ごします。</p></section>
+      <blockquote class="greeting-quote-refined"><span>OUR WISH</span><p>子ども達が、神と人を愛し、愛され、感性豊かに伸び伸び活き活きと育ちますように、職員一同祈りをもって励んでいます。</p></blockquote>
 
-    <section class="greeting-values" aria-labelledby="greeting-values-title">
-      <header class="greeting-values-heading"><span class="greeting-section-label">WHAT WE VALUE</span><h3 id="greeting-values-title">愛真幼稚園が大切にしていること</h3><p>日々の小さな経験を重ねながら、子どもたちの心とからだを育みます。</p></header>
-      <div class="greeting-values-grid">
-        <article class="greeting-value-card"><span class="greeting-value-number">01</span><h4>祈りとこころ</h4><div class="greeting-value-points"><div><b>礼拝</b><p>毎日礼拝を守り、目に見えない恵みや、いのちを大切にする心を育てます。</p></div><div><b>ことば</b><p>人のお話をよく聞き、自分のことばで考え、表現します。</p></div></div></article>
-        <article class="greeting-value-card greeting-value-card-photo"><img src="assets/policy_gallery_photo4-1.jpg" alt="川遊びを楽しむ子どもたち" loading="lazy"><div><span class="greeting-value-number">02</span><h4>自然と遊び</h4><div class="greeting-value-points"><div><b>遊び</b><p>自分で選び、試し、友だちと関わる時間をたっぷりと。</p></div><div><b>園外保育</b><p>山や川へ出掛け、五感を使って季節と出会います。</p></div></div></div></article>
-        <article class="greeting-value-card"><span class="greeting-value-number">03</span><h4>暮らしと表現</h4><div class="greeting-value-points"><div><b>木の園舎</b><p>智頭杉の香りとぬくもりに包まれ、一年中裸足で過ごします。</p></div><div><b>絵本</b><p>たくさんの物語に触れ、想像する楽しさを味わいます。</p></div></div></article>
-        <article class="greeting-value-card greeting-value-card-photo"><img src="assets/life-lunch/photo1_01.jpg" alt="給食を楽しむ子どもたち" loading="lazy"><div><span class="greeting-value-number">04</span><h4>育てる、味わう</h4><div class="greeting-value-points"><div><b>食育</b><p>畑で野菜を育て、収穫し、調理する経験を大切にします。</p></div><div><b>給食</b><p>旬の恵みと手づくりの味を、みんなで楽しく味わいます。</p></div></div></div></article>
-      </div>
-    </section>
+      <p>毎週お弁当を持って園外保育に出掛けます。山登りや川遊び、果物の収穫やイモ掘り、田植えなど、季節ごとの豊かな体験を重ねます。竹の子掘りやソラマメ収穫の翌日には、園庭で焚火をしてバーベキューを楽しむこともあります。</p>
+      <p>食にもこだわり、給食は昆布や煮干しで出汁を取り、できるだけ手づくりで用意します。食材の種類を豊富にし、自然の恵み本来の味を大切にしています。子ども達が園庭で育てた野菜の味は格別です。</p>
 
-    <section class="greeting-closing"><div><span class="greeting-section-label">LIFE AT AISHIN</span><h3>毎日が、楽しい体験の連続です。</h3><p>山登りや川遊び、果物の収穫やイモ掘り。給食は昆布や煮干しで出汁を取り、できるだけ手づくりで、自然の恵み本来の味を大切にしています。</p></div><a class="btn green" href="life.html">園の生活と行事を見る</a></section>
+      <footer class="greeting-letter-ending"><p>愛真幼稚園の子どもたちが、神と人に愛される者として成長していくことを願っています。</p><div class="greeting-signature"><span>愛真幼稚園　園長</span><strong>仲程愛美</strong></div><a class="greeting-life-link" href="life.html">園の生活と行事を見る <span aria-hidden="true">→</span></a></footer>
+    </article>
   </section>`;
 extraContent.greeting = extraContent.greetingRefined;
 extraContent.policy = `<section id="policy" class="policy-content policy-layout"><span class="kicker">Policy</span><h2>教育方針</h2><div class="policy-words"><section class="policy-panel"><span class="policy-label">教育方針</span><p>愛真幼稚園はキリスト教主義により、神様から与えられた幼子を大切に育てます。神への感謝と友だちを大切にする、健全な人格の育成を目指します。</p></section><section class="policy-panel policy-panel-warm"><span class="policy-label">園の目標</span><p>幼子が神から与えられた自然の中で、「あそび保育」を通して、豊かな感性、観察力、創造性、社会性を身に付け、成長していく手助けをします。</p></section></div><section class="policy-children"><span class="policy-label">Children we hope to nurture</span><h3>めざす子ども像</h3><div class="policy-child-list"><p><b>01</b><span>神を敬い、感謝と喜びをもって生きる子ども</span></p><p><b>02</b><span>生命力、生活力にあふれた、元気いっぱいの子ども</span></p><p><b>03</b><span>お互いの違いを認め合い、共に生き平和をつくり出す子ども</span></p><p><b>04</b><span>意欲をもって、主体的に生活を創造していく子ども</span></p></div></section><section class="policy-certification"><div class="policy-cert-copy"><span class="policy-label">Nature-based Education</span><h3>とっとり自然保育認定園です。</h3><p>当園は、子どもたちの「体力の向上」「感性」「探究心」「集中力」「自ら考える力」などを育成する場の一つとして、鳥取県の豊かな自然を活用した自然体験活動を行う幼稚園として、鳥取県から認定されています。</p><p>園外保育で接する鳥取の恵まれた自然環境の中で、のびのびと遊んでいます。</p></div><img class="policy-cert-badge" src="assets/policy_badge1.jpg" alt="とっとり自然保育認定園"></section><div class="photo-gallery policy-gallery"><h3>活動の様子</h3><img src="assets/policy_gallery_photo1.jpg" alt="自然保育の活動の様子" loading="lazy"><img src="assets/policy_gallery_photo2.jpg" alt="自然保育の活動の様子" loading="lazy"><img src="assets/policy_gallery_photo3.jpg" alt="自然保育の活動の様子" loading="lazy"><img src="assets/policy_gallery_photo4-1.jpg" alt="自然保育の活動の様子" loading="lazy"><img src="assets/policy_gallery_photo5.jpg" alt="自然保育の活動の様子" loading="lazy"><img src="assets/policy_gallery_photo6.jpg" alt="自然保育の活動の様子" loading="lazy"></div></section>`;
