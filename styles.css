@@ -371,6 +371,29 @@ body>main{background-color:var(--cream)}
   overflow-wrap:normal;
 }
 
+/* 募集人数表：年度別の生年月日を読みやすく表示する。 */
+.capacity-table small{
+  font-size:14px;
+  line-height:1.85;
+  font-weight:500;
+}
+
+@media(max-width:640px){
+  .capacity-table small{
+    font-size:13.5px;
+    line-height:1.85;
+  }
+
+  /* メインの紹介文はスマートフォンの横幅を広く使う。 */
+  .hero .lead,
+  .cta-panel p{
+    width:calc(100% + 20px);
+    max-width:none;
+    margin-left:-10px;
+    margin-right:-10px;
+  }
+}
+
 /* 長い説明文は、見出しと分けて左揃えで読みやすくする。 */
 .hero .lead,
 .cta-panel p{
