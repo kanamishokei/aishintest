@@ -370,3 +370,20 @@ body>main{background-color:var(--cream)}
   text-wrap:wrap;
   overflow-wrap:normal;
 }
+
+/* 長い説明文は、見出しと分けて左揃えで読みやすくする。 */
+.hero .lead,
+.cta-panel p{
+  text-align:left;
+}
+
+@media(min-width:981px){
+  /* 문단 블록은 중앙에 배치하되, 일본어 본문은 왼쪽에서 읽히게 한다. */
+  .hero .lead,
+  .cta-panel p{
+    margin-left:auto;
+    margin-right:auto;
+    position:relative;
+    left:30px;
+  }
+}
