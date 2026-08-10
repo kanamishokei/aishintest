@@ -355,3 +355,18 @@ body>main{background-color:var(--cream)}
   .greeting-letter-ending>p{font-size:15px}
   .greeting-signature{margin:23px 0 27px}
 }
+
+/* ページ説明は固定幅ではなく、実際のコンテナ幅に合わせて自然に折り返す。 */
+.page-hero p{
+  width:100%;
+  max-width:none;
+  text-wrap:wrap;
+  overflow-wrap:normal;
+}
+
+.playroom-intro p{
+  width:100%;
+  max-width:none;
+  text-wrap:wrap;
+  overflow-wrap:normal;
+}
