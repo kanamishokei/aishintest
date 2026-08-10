@@ -394,6 +394,17 @@ body>main{background-color:var(--cream)}
   }
 }
 
+/* プレイルーム紹介見出し：幅の変化に合わせて滑らかに調整し、自然に折り返す。 */
+.playroom-intro h3{
+  width:100%;
+  max-width:none;
+  font-size:clamp(20px,2.15vw + 7px,42px);
+  line-height:clamp(1.42,1.25vw + 1.1,1.58);
+  letter-spacing:clamp(-.025em,-.012vw,0em);
+  text-wrap:wrap;
+  overflow-wrap:normal;
+}
+
 /* 長い説明文は、見出しと分けて左揃えで読みやすくする。 */
 .hero .lead,
 .cta-panel p{
