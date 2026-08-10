@@ -294,6 +294,7 @@ body>main{flex:1 0 auto}
 */
 html,body{width:100%;margin:0;padding:0}
 html{background-color:var(--cream)!important}
+html.footer-is-visible{background-color:#15392b!important}
 body>main{background-color:var(--cream)}
 .footer{width:100%;padding-bottom:max(24px,env(safe-area-inset-bottom))}
 

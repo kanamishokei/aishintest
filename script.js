@@ -1,3 +1,28 @@
+// iPhoneのホームインジケーター領域まで、フッター背景を自然に広げる。
+const viewportMeta = document.querySelector('meta[name="viewport"]');
+if (viewportMeta && !viewportMeta.content.includes('viewport-fit=cover')) {
+  viewportMeta.content = `${viewportMeta.content},viewport-fit=cover`;
+}
+
+// Safariの下部ツールバーはルート背景とtheme-colorを参照するため、
+// フッターが見えている間だけ園の濃緑色にそろえる。
+let browserThemeMeta = document.querySelector('meta[name="theme-color"]');
+if (!browserThemeMeta) {
+  browserThemeMeta = document.createElement('meta');
+  browserThemeMeta.name = 'theme-color';
+  document.head.append(browserThemeMeta);
+}
+browserThemeMeta.content = '#fbf8f1';
+const pageFooter = document.querySelector('.footer');
+if (pageFooter && 'IntersectionObserver' in window) {
+  const footerThemeObserver = new IntersectionObserver(([entry]) => {
+    const footerIsVisible = entry.isIntersecting;
+    document.documentElement.classList.toggle('footer-is-visible', footerIsVisible);
+    browserThemeMeta.content = footerIsVisible ? '#15392b' : '#fbf8f1';
+  });
+  footerThemeObserver.observe(pageFooter);
+}
+
 // 公開リポジトリ用：検索エンジンへのインデックス登録を依頼しない。
 const searchBlockMeta = document.createElement('meta');
 searchBlockMeta.name = 'robots';
