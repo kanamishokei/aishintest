@@ -287,10 +287,11 @@ body>main{flex:1 0 auto}
   .nav-actions .pill:not(.primary){display:none}
 }
 
-/* iPhone系ブラウザを含め、フッター下にブラウザ既定の白背景を露出させない。 */
+/* iOS・Androidを含むモバイルブラウザで、フッター下に白背景を露出させない。 */
 html,body{width:100%;margin:0;padding:0}
 html{min-height:100vh;min-height:100dvh;background-color:#15392b!important}
-body{min-height:100vh;min-height:100svh;min-height:100dvh}
+body{min-height:100vh;min-height:100svh;min-height:100dvh;background-color:#15392b}
+body>main{background-color:var(--cream)}
 .footer{width:100%;padding-bottom:max(24px,env(safe-area-inset-bottom))}
 @supports(-webkit-touch-callout:none){
   html{min-height:-webkit-fill-available}

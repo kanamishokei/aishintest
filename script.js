@@ -96,10 +96,10 @@ if (desktopMenu) {
   desktopMenu.replaceChildren(
     makeDesktopGroup(['guide.html', '入園案内'], menuSections.admission),
     makeDesktopGroup(['life.html', '園の生活と行事'], menuSections.life),
-    makeLink(['playroom.html', '子育て支援'], 'menu-direct menu-playroom'),
     makeLink(['album.html', 'あいしんモーメント'], 'menu-direct'),
-    makeLink(['faq.html', 'よくある質問'], 'menu-direct'),
     makeDesktopGroup(['nozomikai.html', 'のぞみ会活動'], menuSections.nozomikai),
+    makeLink(['playroom.html', '子育て支援'], 'menu-direct menu-playroom'),
+    makeLink(['faq.html', 'よくある質問'], 'menu-direct'),
     makeDesktopGroup(['', 'その他'], menuSections.utility)
   );
 }
@@ -109,10 +109,10 @@ if (mob) {
   mob.replaceChildren(
     makeMobileGroup('入園案内', menuSections.admission),
     makeMobileGroup('園の生活と行事', menuSections.life),
-    makeLink(['playroom.html', '子育て支援']),
     makeLink(['album.html', 'あいしんモーメント']),
-    makeLink(['faq.html', 'よくある質問']),
     makeMobileGroup('のぞみ会活動', menuSections.nozomikai),
+    makeLink(['playroom.html', '子育て支援']),
+    makeLink(['faq.html', 'よくある質問']),
     makeMobileGroup('その他', menuSections.utility)
   );
 }
